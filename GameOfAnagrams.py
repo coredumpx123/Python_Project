@@ -56,8 +56,12 @@ while True:
 	while True:
 		print('Your word - {}'.format(Colour.RED + '"' + ''.join(shuffled_word).upper() + '"' + Colour.END))
 		print('(Hint : {})'.format(Colour.GREEN +'"' + hint.upper() + '"' + Colour.END))
-		print('\n1. Guess\n2. Reveal the 1st letter in hint(cost - 40% of total coins)\n3. Reveal any new letter in hint(cost - 20% of total coins)\n4. Show no of attempts left\n5. Show available coins\n6. Get an extra attempt(cost - 10% of total coins)\n7. Show answer')
-		choice = int(input('Enter a choice\n'))
+		print('\n1. Guess\n2. Reveal the 1st letter in hint(cost - 40% of total coins)\n3. Reveal any new letter in hint(cost - 20% of total coins)\n4. Show no of attempts left\n5. Show available coins\n6. Get an extra attempt(cost - 10% of total coins)\n7. Show answer and go to next word\n8. Quit game')
+		try:
+			choice = int(input('Enter a choice\n'))
+		except:
+			print('Please enter valid choice\n')
+			continue
 		if choice == 1:
 			if P.attempts:
 				turns += 1
@@ -92,12 +96,7 @@ while True:
 		elif choice == 7:
 			print('Correct word is {}\n'.format(Colour.RED + '"' + word.upper() + '"' + Colour.END))
 			break
+		elif choice == 8:
+			exit()
 		else:
 			print('Please enter valid choice\n')
-	
-	print('1. Next word\n2. Quit game\n')
-	status = int(input('Enter your choice:\n'))
-	while status != 1 and status != 2:
-		status = int(input('Please enter valid choice\n'))
-	if status == 2:
-		break
